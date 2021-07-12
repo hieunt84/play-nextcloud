@@ -4,8 +4,6 @@
 # SECTION 1: PREPARE
 
 # update system
-sudo -i
-sleep 2
 yum clean all
 yum -y update
 sleep 1
@@ -22,20 +20,12 @@ systemctl stop firewalld
 systemctl disable firewalld
 
 # config hostname
-# hostnamectl set-hostname node2
+hostnamectl set-hostname nextcloud.hit.local
 
 # config file host
-# cat >> "/etc/hosts" <<END
-# 172.16.10.100 node1
-# 172.16.10.101 node2
-# 172.16.10.102 node3 
-# END
-
-# config network, config in vagrantfile in dev
-
-# Tắt swap: Nên tắt swap để kubelet hoạt động ổn định.
-# sed -i '/swap/d' /etc/fstab
-# swapoff -a
+cat >> "/etc/hosts" <<END
+127.0.0.1 nextcloud nextcloud.hit.local
+END
 
 ##########################################################################################
 # SECTION 2: INSTALL 
@@ -67,9 +57,21 @@ systemctl enable docker
 
 #########################################################################################
 # SECTION 3: INSTALL NEXTCLOUD
-docker run -d -p 8080:80 nextcloud
+
+docker run -d \
+--name hit-nextcloud \
+-v hit-nextcloud:/var/www/html \
+-p 8080:80 \
+nextcloud
 
 #########################################################################################
 # SECTION 4: FINISHED
 
-echo "installation nextcloud completely"
+# enable firwall
+systemctl start firewalld
+systemctl enable firewalld
+sudo firewall-cmd --zone=public --permanent --add-port=8080/tcp
+sudo firewall-cmd --reload
+
+# notification
+echo "next deploy in file doc.md"
