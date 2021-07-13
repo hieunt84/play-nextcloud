@@ -1,5 +1,5 @@
 ### Info setup
-    admin/Happyit@2021$
+    admin/abc123!@#
     http://nextcloud.hit.test:8080/
 ### next
     config persistent volume.
