@@ -1,1 +1,1 @@
-{"name":"generic/centos7","version":"3.2.22","provider":"virtualbox","directory":"boxes/generic-VAGRANTSLASH-centos7/3.2.22/virtualbox"}
+{"name":"centos/7","version":"2004.01","provider":"virtualbox","directory":"boxes/centos-VAGRANTSLASH-7/2004.01/virtualbox"}

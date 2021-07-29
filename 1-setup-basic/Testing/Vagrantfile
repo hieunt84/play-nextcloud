@@ -5,11 +5,11 @@ Vagrant.configure("2") do |config|
 
   # make vm 
   config.vm.define "srv-nextcloud" do |node|
-    node.vm.box = "generic/centos7"
+    node.vm.box = "centos/7"
     node.vm.box_check_update = false
     #node.vbguest.auto_update = false
     node.vm.hostname = "srv-nextcloud"
-    node.vm.network "public_network", ip: "172.20.10.100"
+    node.vm.network "public_network", ip: "172.20.10.116"
     #node.vm.network "private_network", ip: "172.16.10.100"
     node.vm.provision "shell", path: "setup-nextcloud.sh"   
   end
