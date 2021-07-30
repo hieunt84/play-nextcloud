@@ -1,18 +1,18 @@
 ### Prepare
-  VM on VMware
+  1.VM on VMware
     CPU:1
     RAM:1GB
     HDD:10GB
     OS:Centos7-64bit
-  Bootstrap:bootstrap.sh
+  2.Bootstrap:bootstrap.sh
 
 ### Deploy
-    Step 1: depoloy nextcloud
+    1.Step 1: depoloy nextcloud
       -using portainer
       -using docker-compose.yml
-    Step 2: 
+    2.Step 2: 
       config nginx-proxy-manager rule for nextcloud
-    Step 3:
+    3.Step 3:
       finish
 
 ### Info setup

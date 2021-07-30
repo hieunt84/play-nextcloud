@@ -72,7 +72,7 @@ docker run -d -p 9000:9000 --name=portainer --restart=always \
 #########################################################################################
 # SECTION 3: FINISHED
 
-# enable firwall
+# config firwall
 systemctl start firewalld
 systemctl enable firewalld
 sudo firewall-cmd --zone=public --permanent --add-port=8080/tcp
@@ -81,3 +81,6 @@ sudo firewall-cmd --reload
 
 # notification
 echo "next deploy in file doc.md"
+echo " Server restart 5s"
+sleep 5
+reboot

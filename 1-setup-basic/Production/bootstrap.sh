@@ -58,15 +58,14 @@ systemctl enable docker
 #install vmware tools
 yum install -y open-vm-tools
 
-# Deploy Portainer
-# Create volume cho portainer
-docker volume create portainer_data
+# Install nextcloud
 
-# Create portainer container
-docker run -d -p 9000:9000 --name=portainer --restart=always \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  -v portainer_data:/data \
-  portainer/portainer  
+docker run -d 
+  --restart=always \
+  --name=nextcloud \
+  -p 6060:80 \
+  -v nextcloud:/var/www/html \
+  nextcloud  
 
 #########################################################################################
 # SECTION 3: FINISHED
@@ -74,7 +73,7 @@ docker run -d -p 9000:9000 --name=portainer --restart=always \
 # enable firwall
 systemctl start firewalld
 systemctl enable firewalld
-sudo firewall-cmd --zone=public --permanent --add-port=8080/tcp
+sudo firewall-cmd --zone=public --permanent --add-port=6060/tcp
 sudo firewall-cmd --reload
 
 # notification

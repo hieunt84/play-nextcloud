@@ -69,11 +69,12 @@ systemctl enable docker
 # SECTION 3: INSTALL NEXTCLOUD
 
 # install
-docker run -d \
---name hit-nextcloud \
--v hit-nextcloud:/var/www/html \
--p 8080:80 \
-nextcloud
+docker run -d 
+  --restart=always \
+  --name=nextcloud \
+  -p 6060:80 \
+  -v nextcloud:/var/www/html \
+  nextcloud  
 
 #########################################################################################
 # SECTION 4: FINISHED

@@ -1,3 +1,6 @@
+## setup basic
+  using docker run
+  
 ### Prepare
   VM on VMware
     CPU:1
@@ -7,22 +10,19 @@
   Bootstrap:bootstrap.sh
 
 ### Deploy continue
-    Step 1: depoly nextcloud
-      -using portainer
-      -using docker-compose.yml
-    Step 2: 
-      access http://ip-private:8080
+    Step 1: 
+      access http://ip-private:6060
       setup init
+    Step 2:
+      docker exec --user www-data hit-nextcloud php occ config:system:set trusted_domains 1 --value=ip-public:6060
     Step 3:
-      docker exec --user www-data hit-nextcloud php occ config:system:set trusted_domains 1 --value=ip-public:8080
-    Step 4:
       finish
 
 ### Info setup    
     local:
-      http://nextcloud.hit.local:8080/
+      http://nextcloud.hit.local:6060/
     internet:
-      http://xxx:8080/
+      http://xxx:6060/
     acc admin:
       xxx
       
@@ -32,5 +32,5 @@
     
 ### fix error unstruted domain
     Note: phải run init setup từ môi trường local rồi mới chạy được lệnh này.
-    docker exec --user www-data hit-nextcloud php occ config:system:get trusted_domains
-    docker exec --user www-data hit-cloud php occ config:system:set trusted_domains 1 --value=ip-public:8080
+    docker exec --user www-data nextcloud php occ config:system:get trusted_domains
+    docker exec --user www-data nextcloud php occ config:system:set trusted_domains 1 --value=ip-public:6060
