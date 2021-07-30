@@ -1,10 +1,21 @@
+### Prepare
+  VM on VMware
+    CPU:1
+    RAM:1GB
+    HDD:10GB
+    OS:Centos7-64bit
+  Bootstrap:bootstrap.sh
+
 ### Deploy continue
-    Step 1: 
+    Step 1: depoly nextcloud
+      -using portainer
+      -using docker-compose.yml
+    Step 2: 
       access http://ip-private:8080
       setup init
-    Step 2:
-      docker exec --user www-data hit-nextcloud php occ config:system:set trusted_domains 1 --value=ip-public:8080
     Step 3:
+      docker exec --user www-data hit-nextcloud php occ config:system:set trusted_domains 1 --value=ip-public:8080
+    Step 4:
       finish
 
 ### Info setup    

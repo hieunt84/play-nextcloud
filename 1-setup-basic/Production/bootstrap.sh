@@ -20,11 +20,11 @@ systemctl stop firewalld
 systemctl disable firewalld
 
 # config hostname
-hostnamectl set-hostname nextcloud.hit.local
+hostnamectl set-hostname docker1
 
 # config file host
 cat >> "/etc/hosts" <<END
-127.0.0.1 nextcloud nextcloud.hit.local
+127.0.0.1 docker1 docker1.hit.local
 END
 
 ##########################################################################################
@@ -55,17 +55,21 @@ systemctl daemon-reload
 systemctl restart docker
 systemctl enable docker
 
-#########################################################################################
-# SECTION 3: INSTALL NEXTCLOUD
+#install vmware tools
+yum install -y open-vm-tools
 
-docker run -d \
---name hit-nextcloud \
--v hit-nextcloud:/var/www/html \
--p 8080:80 \
-nextcloud
+# Deploy Portainer
+# Create volume cho portainer
+docker volume create portainer_data
+
+# Create portainer container
+docker run -d -p 9000:9000 --name=portainer --restart=always \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v portainer_data:/data \
+  portainer/portainer  
 
 #########################################################################################
-# SECTION 4: FINISHED
+# SECTION 3: FINISHED
 
 # enable firwall
 systemctl start firewalld
