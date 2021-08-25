@@ -63,7 +63,7 @@ yum install -y open-vm-tools
 docker run -d 
   --restart=always \
   --name=nextcloud \
-  -p 6060:80 \
+  -p 8080:80 \
   -v nextcloud:/var/www/html \
   nextcloud  
 
@@ -73,7 +73,7 @@ docker run -d
 # enable firwall
 systemctl start firewalld
 systemctl enable firewalld
-sudo firewall-cmd --zone=public --permanent --add-port=6060/tcp
+sudo firewall-cmd --zone=public --permanent --add-port=8080/tcp
 sudo firewall-cmd --reload
 sudo systemctl restart firewalld
 

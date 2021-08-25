@@ -11,18 +11,18 @@
 
 ### Deploy continue
     Step 1: 
-      access http://ip-private:6060
+      access http://ip-private:8080
       setup init
     Step 2:
-      docker exec --user www-data hit-nextcloud php occ config:system:set trusted_domains 1 --value=ip-public:6060
+      docker exec --user www-data hit-nextcloud php occ config:system:set trusted_domains 1 --value=ip-public:8080
     Step 3:
       finish
 
 ### Info setup    
     local:
-      http://nextcloud.hit.local:6060/
+      http://nextcloud.hit.local:8080/
     internet:
-      http://xxx:6060/
+      http://xxx:8080/
     acc admin:
       xxx
       
@@ -33,4 +33,4 @@
 ### fix error unstruted domain
     Note: phải run init setup từ môi trường local rồi mới chạy được lệnh này.
     docker exec --user www-data nextcloud php occ config:system:get trusted_domains
-    docker exec --user www-data nextcloud php occ config:system:set trusted_domains 1 --value=ip-public:6060
+    docker exec --user www-data nextcloud php occ config:system:set trusted_domains 1 --value=ip-public:8080
