@@ -1,4 +1,5 @@
 #!/bin/bash
+# Script deploy nextcloud with docker
 
 ##########################################################################################
 # SECTION 1: PREPARE
@@ -20,11 +21,12 @@ systemctl stop firewalld
 systemctl disable firewalld
 
 # config hostname
-hostnamectl set-hostname docker1
+hostnamectl set-hostname test
 
 # config file host
 cat >> "/etc/hosts" <<END
-127.0.0.1 docker1 docker1.hit.local
+127.0.0.1 test test.hit.local
+192.168.1.244 test test.hit.local
 END
 
 ##########################################################################################
@@ -32,9 +34,11 @@ END
 
 # install docker
 
-yum install -y yum-utils device-mapper-persistent-data lvm2
+yum -y install yum-utils device-mapper-persistent-data lvm2
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-yum install -y docker-ce
+yum -y install docker-ce
+
+# create servie docker
 mkdir /etc/docker
 cat > /etc/docker/daemon.json <<EOF
 {
@@ -56,26 +60,34 @@ systemctl restart docker
 systemctl enable docker
 
 #install vmware tools
-yum install -y open-vm-tools
+yum -y install open-vm-tools
 
-# Install nextcloud
+# install git
+yum -y install git
 
-docker run -d 
-  --restart=always \
-  --name=nextcloud \
-  -p 6060:80 \
-  -v nextcloud:/var/www/html \
-  nextcloud  
+# Deploy Portainer
+# Create volume cho portainer
+docker volume create portainer_data
+
+# Create portainer container
+docker run -d -p 9000:9000 --name=portainer --restart=always \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v portainer_data:/data \
+  portainer/portainer  
 
 #########################################################################################
 # SECTION 3: FINISHED
 
-# enable firwall
+# config firwall
 systemctl start firewalld
 systemctl enable firewalld
-sudo firewall-cmd --zone=public --permanent --add-port=6060/tcp
+sudo firewall-cmd --zone=public --permanent --add-port=9000/tcp
+sudo firewall-cmd --zone=public --permanent --add-port=80/tcp
+sudo firewall-cmd --zone=public --permanent --add-port=443/tcp
 sudo firewall-cmd --reload
-sudo systemctl restart firewalld
 
 # notification
 echo "next deploy in file doc.md"
+echo " Server restart 5s"
+sleep 5
+reboot
