@@ -1,5 +1,6 @@
 #!/bin/bash
 # Script deploy nextcloud with docker
+# Use Portainer and docker-compose
 
 ##########################################################################################
 # SECTION 1: PREPARE
@@ -21,12 +22,12 @@ systemctl stop firewalld
 systemctl disable firewalld
 
 # config hostname
-hostnamectl set-hostname test
+hostnamectl set-hostname docker-product01
 
 # config file host
 cat >> "/etc/hosts" <<END
-127.0.0.1 test test.hit.local
-192.168.1.244 test test.hit.local
+127.0.0.1 docker-product01 docker-product01.hit.local
+192.168.1.243 docker-product01 docker-product01.hit.local
 END
 
 ##########################################################################################
@@ -62,29 +63,16 @@ systemctl enable docker
 #install vmware tools
 yum -y install open-vm-tools
 
-# install git
-yum -y install git
-
-# Deploy Portainer
-# Create volume cho portainer
-docker volume create portainer_data
-
-# Create portainer container
-docker run -d -p 9000:9000 --name=portainer --restart=always \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  -v portainer_data:/data \
-  portainer/portainer  
-
 #########################################################################################
 # SECTION 3: FINISHED
 
 # config firwall
 systemctl start firewalld
 systemctl enable firewalld
-sudo firewall-cmd --zone=public --permanent --add-port=9000/tcp
-sudo firewall-cmd --zone=public --permanent --add-port=80/tcp
-sudo firewall-cmd --zone=public --permanent --add-port=443/tcp
+sudo firewall-cmd --zone=public --permanent --add-port=8080/tcp
+sudo firewall-cmd --zone=public --permanent --add-port=2375/tcp
 sudo firewall-cmd --reload
+sudo systemctl restart firewalld
 
 # notification
 echo "next deploy in file doc.md"
