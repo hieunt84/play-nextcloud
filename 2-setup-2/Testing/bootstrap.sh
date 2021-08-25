@@ -3,12 +3,14 @@
 ##########################################################################################
 # SECTION 1: PREPARE
 
-# update system
+# change root
 sudo -i
 sleep 2
-yum clean all
-yum -y update
-sleep 1
+
+# update system
+# yum clean all
+# yum -y update
+# sleep 1
 
 # config timezone
 timedatectl set-timezone Asia/Ho_Chi_Minh
@@ -64,7 +66,7 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 # Start docker-compose
 cd ~
 git clone https://github.com/hieunt84/play-nextcloud.git
-cd ./2-setup-2/Testing
+cd ./play-nextcloud/2-setup-2/Testing
 docker-compose pull
 docker-compose up -d
 
