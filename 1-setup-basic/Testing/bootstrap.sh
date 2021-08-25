@@ -1,14 +1,17 @@
 #!/bin/bash
+# Script deploy nextcloud with docker
 
 ##########################################################################################
 # SECTION 1: PREPARE
 
-# update system
+# change root
 sudo -i
 sleep 2
-yum clean all
-yum -y update
-sleep 1
+
+# update system
+# yum clean all
+# yum -y update
+# sleep 1
 
 # config timezone
 timedatectl set-timezone Asia/Ho_Chi_Minh
@@ -22,20 +25,13 @@ systemctl stop firewalld
 systemctl disable firewalld
 
 # config hostname
-# hostnamectl set-hostname node2
+hostnamectl set-hostname docker1
 
 # config file host
-# cat >> "/etc/hosts" <<END
-# 172.16.10.100 node1
-# 172.16.10.101 node2
-# 172.16.10.102 node3 
-# END
-
-# config network, config in vagrantfile in dev
-
-# Tắt swap: Nên tắt swap để kubelet hoạt động ổn định.
-# sed -i '/swap/d' /etc/fstab
-# swapoff -a
+cat >> "/etc/hosts" <<END
+127.0.0.1 docker1 docker1.hit.local
+172.20.10.10 docker1 docker1.hit.local
+END
 
 ##########################################################################################
 # SECTION 2: INSTALL 
@@ -45,6 +41,8 @@ systemctl disable firewalld
 yum install -y yum-utils device-mapper-persistent-data lvm2
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 yum install -y docker-ce
+
+# create servie docker
 mkdir /etc/docker
 cat > /etc/docker/daemon.json <<EOF
 {
@@ -65,18 +63,36 @@ systemctl daemon-reload
 systemctl restart docker
 systemctl enable docker
 
-#########################################################################################
-# SECTION 3: INSTALL NEXTCLOUD
+# Deploy Portainer
+# Create volume cho portainer
+docker volume create portainer_data
 
-# install
-docker run -d 
-  --restart=always \
-  --name=nextcloud \
-  -p 6060:80 \
-  -v nextcloud:/var/www/html \
-  nextcloud  
+# Create portainer container
+docker run -d -p 9000:9000 --name=portainer --restart=always \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v portainer_data:/data \
+  portainer/portainer
+
+#########################################################################################
+# SECTION 3: DEPLOY NEXTCLOUD
+docker run -d --name=mynextcloud --restart=always \
+-p 8080:80
+-v nextcloud:/var/www/html \
+nextcloud
 
 #########################################################################################
 # SECTION 4: FINISHED
 
-echo "installation nextcloud completely"
+# config firwall
+systemctl start firewalld
+systemctl enable firewalld
+sudo firewall-cmd --zone=public --permanent --add-port=8080/tcp
+sudo firewall-cmd --zone=public --permanent --add-port=9000/tcp
+sudo firewall-cmd --reload
+
+# notification
+echo " DEPLOY COMPLETELY"
+# echo "next deploy in file doc.md"
+# echo " Server restart 5s"
+# sleep 5
+# reboot

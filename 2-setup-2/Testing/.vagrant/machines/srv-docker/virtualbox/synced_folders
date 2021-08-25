@@ -1,1 +1,0 @@
-{"rsync":{"/vagrant":{"type":"rsync","guestpath":"/vagrant","hostpath":"C:/Projects/play-nextcloud/2-setup-2/Testing","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}}}

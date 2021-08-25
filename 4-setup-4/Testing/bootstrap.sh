@@ -73,77 +73,29 @@ docker run -d -p 9000:9000 --name=portainer --restart=always \
   -v portainer_data:/data \
   portainer/portainer
 
-### Install Docker compose
+# Install Docker compose
 sudo curl -sL "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
+# Install git
+# sudo yum -y install git
+
 #########################################################################################
 # SECTION 3: DEPLOY NEXTCLOUD
 
-# create docker-compose to depoly nextcloud
-cd ~
-cat >> "./docker-compose.yml" <<EOL
-version: '2'
-
-volumes:
-  nextcloud:
-  dbnextcloud:
-
-services:
-  db:
-    image: mariadb
-    restart: always
-    command: 
-      - --transaction-isolation=READ-COMMITTED
-      - --binlog-format=ROW
-      - --innodb_read_only_compressed=OFF
-    volumes:
-      - dbnextcloud:/var/lib/mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=abcqwe123@
-      - MYSQL_PASSWORD=abcqwe123@
-      - MYSQL_DATABASE=nextcloud
-      - MYSQL_USER=nextcloud
-  
-  redis:
-    image: redis:alpine
-    restart: always
-
-  app:
-    image: nextcloud
-    restart: always
-    ports:
-      - 8080:80
-    links:
-      - db
-    volumes:
-      - nextcloud:/var/www/html
-    environment:
-      - MYSQL_PASSWORD=abcqwe123@
-      - MYSQL_DATABASE=nextcloud
-      - MYSQL_USER=nextcloud
-      - MYSQL_HOST=db
-      - REDIS_HOST=redis
-EOL
+# clone source code from github
+# cd ~
+# git clone https://github.com/hieunt84/play-nextcloud-test2.git
+# cd ./play-nextcloud-test2/proxy/version3
 
 # Start docker-compose
-docker-compose pull
-docker-compose up -d
+# docker-compose pull
+# docker-compose up -d
+# curl -H "Host: nextcloud.local" localhost
 
 #########################################################################################
 # SECTION 4: FINISHED
 
-# config firwall
-systemctl start firewalld
-systemctl enable firewalld
-sudo firewall-cmd --zone=public --permanent --add-port=8080/tcp
-sudo firewall-cmd --zone=public --permanent --add-port=9000/tcp
-sudo firewall-cmd --reload
-
 # notification
 echo " DEPLOY COMPLETELY"
-# echo "next deploy in file doc.md"
-# echo " Server restart 5s"
-# sleep 5
-# reboot
