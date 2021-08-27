@@ -18,11 +18,15 @@
 4. https://ping.eu/: dùng để kiểm tra mở port
 
 ### Các công nghệ sử dụng trong dự án:
-1. Docker: dùng để triển khai dự án
+1. Docker: công nghệ mới dùng để triển khai dự án một cách nhanh chóng.
 2. Nginx: cung cấp giải pháp reverse proxy
 3. Let's Encrypt: cung cấp giải pháp mã hóa ssl
-4. mariadb: cung cấp giải pháp cơ sở dữ liệu
 5. redis: cung cấp giải pháp caching cho ứng dụng web nextcloud.
+6. LAMP-stack: nền tảng để chạy ứng dụng.
+   1. Linux: cung cấp hệ điều hành mã nguồn mở
+   2. Apache: cung cấp web server
+   3. Mariadb: cung cấp giải pháp cơ sở dữ liệu
+   4. Php : xử lý code bằng ngôn ngữ php.
 
 ### Ref    
     https://hub.docker.com/_/nextcloud    
