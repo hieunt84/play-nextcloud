@@ -2,7 +2,7 @@
 - triển khai bằng docker-compose
 - dùng image mariadb:lastest làm database
 - cấu hình tham số command: --innodb_read_only_compressed=OFF
-    services:
+    `services:
       db:
         image: mariadb
         restart: always
@@ -16,4 +16,4 @@
           - MYSQL_ROOT_PASSWORD=
           - MYSQL_PASSWORD=
           - MYSQL_DATABASE=nextcloud
-          - MYSQL_USER=nextcloud
+          - MYSQL_USER=nextcloud`
