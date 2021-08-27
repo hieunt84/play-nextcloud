@@ -30,12 +30,12 @@ $CONFIG = array (
   'secret' => 'E3OGcnC0sa2hCj6VqKQCgAxu6MU+Q43Qjdh2V/Qd9Pmjf5RF',
   'trusted_domains' => 
   array (
-    0 => 'test.phuthinhtravel.vn',
+    0 => 'test.hit.local',
   ),
   'datadirectory' => '/var/www/html/data',
   'dbtype' => 'mysql',
   'version' => '22.1.0.1',
-  'overwrite.cli.url' => 'http://test.phuthinhtravel.vn',
+  'overwrite.cli.url' => 'http://test.hit.local',
   'dbname' => 'nextcloud',
   'dbhost' => 'db',
   'dbport' => '',

@@ -1,2 +1,2 @@
 ### Thông tin triển khai
-- dùng docker để triển khai
+- dùng docker run để triển khai
