@@ -35,9 +35,9 @@ https://vietnix.vn/ssl-la-gi/
 
 ### Docker
 1. Instruction LABEL
-You can use labels to organize your images, record licensing information, annotate relationships between containers, volumes, and networks, or in any way that makes sense for your business or application.
-Ref:https://www.shellhacks.com/docker-label-image-build-dockerfile-example/
+- You can use labels to organize your images, record licensing information, annotate relationships between containers, volumes, and networks, or in any way that makes sense for your business or application.
+- Ref:https://www.shellhacks.com/docker-label-image-build-dockerfile-example/
 
 2. Instruction ENTRYPOINT
-Ref:https://www.bmc.com/blogs/docker-cmd-vs-entrypoint/
+- Ref:https://www.bmc.com/blogs/docker-cmd-vs-entrypoint/
 
