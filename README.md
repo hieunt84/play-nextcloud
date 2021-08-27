@@ -1,7 +1,9 @@
 # play-nextcloud
 ### Giới thiệu
-- Gần giống với Google Drive.
-- Ngoài ra có nhiều chức năng hay ho hơn.
+- Cung cấp giải pháp lưu trữ đám mây cho cá nhân và doanh nghiệp
+  + giống với Google Drive, OneDrive,...
+- Cung cấp giải pháp không gian làm việc cộng tác
+  + Giống với Google Workspace
 
 ### Có hai cách triển khai
 1. Triển khai cách 1:
@@ -21,7 +23,7 @@
 1. Docker: công nghệ mới dùng để triển khai dự án một cách nhanh chóng.
 2. Nginx: cung cấp giải pháp reverse proxy
 3. Let's Encrypt: cung cấp giải pháp mã hóa ssl
-5. redis: cung cấp giải pháp caching cho ứng dụng web nextcloud.
+5. Redis: cung cấp giải pháp caching cho ứng dụng web nextcloud.
 6. LAMP-stack: nền tảng để chạy ứng dụng.
 - Linux: cung cấp hệ điều hành mã nguồn mở
 - Apache: cung cấp web server
