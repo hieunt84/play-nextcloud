@@ -1,7 +1,7 @@
 # play-nextcloud
-### Intro
-    - Gần giống với Google Drive.
-    - Ngoài ra có nhiều chức năng hay ho hơn.
+### Giới thiệu
+- Gần giống với Google Drive.
+- Ngoài ra có nhiều chức năng hay ho hơn.
 
 ### Có hai cách triển khai
 1. Triển khai cách 1:
@@ -29,5 +29,5 @@
 - Php : xử lý code bằng ngôn ngữ php.
 
 ### Ref    
-    https://hub.docker.com/_/nextcloud    
-    https://blog.cloud365.vn/nextcloud/nextcloud-p1-cai-dat-tren-centos7/
+- https://hub.docker.com/_/nextcloud    
+- https://blog.cloud365.vn/nextcloud/nextcloud-p1-cai-dat-tren-centos7/
