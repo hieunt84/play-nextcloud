@@ -11,13 +11,13 @@
 - Trong quá trình khiển khai có luôn proxy và mã hóa ssl
 - ví dụ: version 5
 
-### Các công cụ sử dụng trong dự án:
+### Công cụ sử dụng trong dự án:
 1. Portainer: quản lý docker host qua giao diện web
 2. Nginx-proxy-manager: cung cấp reverse proxy và chứng chỉ ssl Let's Encrypt
 3. https://app.diagrams.net/: dùng để vẽ sơ đồ kiến trúc dự án
 4. https://ping.eu/: dùng để kiểm tra mở port
 
-### Các công nghệ sử dụng trong dự án:
+### Công nghệ sử dụng trong dự án:
 1. Docker: công nghệ mới dùng để triển khai dự án một cách nhanh chóng.
 2. Nginx: cung cấp giải pháp reverse proxy
 3. Let's Encrypt: cung cấp giải pháp mã hóa ssl
