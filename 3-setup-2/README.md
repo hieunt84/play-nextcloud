@@ -1,7 +1,7 @@
 ### Thông tin
-- triển khai bằng docker-compose
-- dùng image mariadb:lastest làm database
-- cấu hình tham số command: --innodb_read_only_compressed=OFF
+1. triển khai bằng docker-compose
+2. dùng image mariadb:lastest làm database
+3. cấu hình tham số command: --innodb_read_only_compressed=OFF
     `services:
       db:
         image: mariadb
