@@ -1,5 +1,5 @@
 #!/bin/bash
-# Script deploy nextcloud with docker
+# Script deploy nextcloud with docker-compose
 
 ##########################################################################################
 # SECTION 1: PREPARE
