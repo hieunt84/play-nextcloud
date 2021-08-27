@@ -32,6 +32,9 @@
 - Mariadb: cung cấp giải pháp cơ sở dữ liệu
 - Php : xử lý code bằng ngôn ngữ php.
 
-### Ref    
+### Tham khảo
+- https://vietnix.vn/nextcloud-la-gi/
 - https://hub.docker.com/_/nextcloud    
 - https://blog.cloud365.vn/nextcloud/nextcloud-p1-cai-dat-tren-centos7/
+
+
