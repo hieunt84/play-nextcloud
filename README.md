@@ -4,6 +4,8 @@
   + giống với Google Drive, OneDrive,...
 - Cung cấp giải pháp không gian làm việc cộng tác
   + Giống với Google Workspace
+- Tham khảo chi tiết hơn:
+  + https://vietnix.vn/nextcloud-la-gi/
 
 ### Có hai cách triển khai
 1. Triển khai cách 1:
