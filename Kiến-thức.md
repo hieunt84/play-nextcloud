@@ -1,12 +1,12 @@
 ### https
-1.ssl/tls:
+1. ssl/tls:
 - là giao thức hoạt động ở tầng 4 của mô hình TCP/IP.
 - dùng để mã hóa thông tin.
 - kết hợp với http để tăng cường an toàn thông tin cho website.
 
-2.https = http + ssl/tls(nâng cấp ssl)
+2. https = http + ssl/tls(nâng cấp ssl)
 
-3.Để triển khai https cho website:
+3. Để triển khai https cho website:
   - Chúng cần chứng chỉ ssl (certificate) cho website, tên miền
   - Chứng chỉ SSL được cấp bởi CA (Let's Encrypt, Glabal Sign )
   - Sau khi có chứng chỉ ssl, ta cấu hình website sử dụng ssl.
