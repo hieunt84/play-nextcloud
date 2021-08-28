@@ -1,6 +1,6 @@
 ### command docker
 ```console
-docker run hello-world
+docker run
 docker ps -a
 docker start container-id
 docker exec -it container-id /bin/bash
