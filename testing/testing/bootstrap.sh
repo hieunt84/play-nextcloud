@@ -57,7 +57,7 @@ cd ~
 git clone https://github.com/hieunt84/play-nextcloud.git
 
 # change working directory
-cd ./play-nexcloud/testing/tesing
+cd ./play-nextcloud/testing/testing
 
 # Make folder store data for portainer
 mkdir -p ./data/portainer
@@ -67,12 +67,6 @@ mkdir -p ./data/mariadb
 
 # Make folder store data redis
 mkdir -p ./data/redis
-
-# Make folder store data config redis
-mkdir -p ./config/redis
-
-# copy redis.conf
-cp ./redis.conf ./config/redis/redis.conf
 
 # Make folder store data for nextcloud
 mkdir -p ./data/nexcloud
