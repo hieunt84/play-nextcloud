@@ -27,7 +27,7 @@ services:
 
   redis:
     container_name: redis
-    image: redis:alpine
+    image: redis:6.0.15-alpine
     command: ["redis-server", "--appendonly", "yes"]
     restart: always
     volumes:
@@ -64,4 +64,17 @@ services:
       - mariadb
       - redis
     networks:
-      - common 
+      - common
+
+  cron:
+    container_name: cron
+    image: nextcloud:${NEXTCLOUD_VERSION}
+    restart: always
+    volumes:
+      - ./data/nextcloud:/var/www/html
+    entrypoint: /cron.sh
+    depends_on:
+      - mariadb
+      - redis
+    networks:
+      - common

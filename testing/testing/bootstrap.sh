@@ -72,8 +72,10 @@ mkdir -p ./data/redis
 mkdir -p ./data/nexcloud
 
 # deploy nextcloud
-docker-compose pull
 docker-compose up -d
+
+# verify
+docker-compose ps
 
 #########################################################################################
 # SECTION 4: FINISHED
