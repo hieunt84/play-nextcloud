@@ -1,4 +1,5 @@
 #!/bin/bash
+# Script deploy nextcloud with docker
 
 ##########################################################################################
 # SECTION 1: PREPARE
@@ -23,6 +24,15 @@ sed -i 's/enforcing/disabled/g' /etc/selinux/config
 systemctl stop firewalld
 systemctl disable firewalld
 
+# config hostname
+hostnamectl set-hostname docker1
+
+# config file host
+cat >> "/etc/hosts" <<END
+127.0.0.1 docker1 docker1.hit.local
+172.20.10.10 docker1 docker1.hit.local
+END
+
 ##########################################################################################
 # SECTION 2: INSTALL 
 
@@ -31,6 +41,8 @@ systemctl disable firewalld
 yum install -y yum-utils device-mapper-persistent-data lvm2
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 yum install -y docker-ce
+
+# create servie docker
 mkdir /etc/docker
 cat > /etc/docker/daemon.json <<EOF
 {
@@ -51,39 +63,39 @@ systemctl daemon-reload
 systemctl restart docker
 systemctl enable docker
 
-# install git
-yum -y install git
+# Deploy Portainer
+# Create volume cho portainer
+docker volume create portainer_data
+
+# Create portainer container
+docker run -d -p 9000:9000 --name=portainer --restart=always \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v portainer_data:/data \
+  portainer/portainer
 
 # Install Docker compose
 sudo curl -sL "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
+# Install git
+# sudo yum -y install git
 
 #########################################################################################
-# SECTION 3: INSTALL NEXTCLOUD
+# SECTION 3: DEPLOY NEXTCLOUD
+
+# clone source code from github
+# cd ~
+# git clone https://github.com/hieunt84/play-nextcloud-test2.git
+# cd ./play-nextcloud-test2/proxy/version3
 
 # Start docker-compose
-cd ~
-git clone https://github.com/hieunt84/play-nextcloud.git
-cd ./play-nextcloud/2-setup-2/Testing
-docker-compose pull
-docker-compose up -d
+# docker-compose pull
+# docker-compose up -d
+# curl -H "Host: nextcloud.local" localhost
 
 #########################################################################################
 # SECTION 4: FINISHED
 
-# config firwall
-systemctl start firewalld
-systemctl enable firewalld
-sudo firewall-cmd --zone=public --permanent --add-port=8080/tcp
-sudo firewall-cmd --zone=public --permanent --add-port=2375/tcp
-sudo firewall-cmd --reload
-sudo systemctl restart firewalld
-
 # notification
-echo "installation nextcloud completely"
-echo "next deploy in file doc.md"
-echo " Server restart 5s"
-sleep 5
-reboot
+echo " DEPLOY COMPLETELY"
