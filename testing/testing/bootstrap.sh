@@ -69,7 +69,7 @@ mkdir -p ./data/mariadb
 mkdir -p ./data/redis
 
 # Make folder store data for nextcloud
-mkdir -p ./data/nexcloud
+mkdir -p ./data/nextcloud
 
 # deploy nextcloud
 docker-compose up -d
