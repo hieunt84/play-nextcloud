@@ -2,14 +2,16 @@ version: '2'
 
 networks: 
   common:
+  proxy-tier:
 
 services:
   mariadb:
     container_name: mariadb
-    image: mariadb:10.5
+    image: mariadb:10.6
     command: 
       - --transaction-isolation=READ-COMMITTED 
       - --binlog-format=ROW
+      - --innodb_read_only_compressed=OFF
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-u", "root", "--password=Abcqwe123@"]
       interval: 10s
@@ -66,6 +68,7 @@ services:
       - redis
     networks:
       - common
+      - proxy-tier
 
   cron:
     container_name: cron
@@ -88,4 +91,4 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro    
     networks:
-      - common
+      - proxy-tier

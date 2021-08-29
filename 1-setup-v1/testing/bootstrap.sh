@@ -82,7 +82,8 @@ docker-compose ps
 # config firwall
 systemctl start firewalld
 systemctl enable firewalld
-sudo firewall-cmd --zone=public --permanent --add-port=8080/tcp
+sudo firewall-cmd --zone=public --permanent --add-port=80/tcp
+# Open Port for link Portainer
 sudo firewall-cmd --zone=public --permanent --add-port=2375/tcp
 sudo firewall-cmd --reload
 sudo systemctl restart firewalld
