@@ -11,7 +11,6 @@ Vagrant.configure("2") do |config|
       vb.cpus = 2                                # cấp 2 nhân CPU
       vb.memory = "2048"                         # cấu hình dùng 2GB bộ nhớ
     end
-    node.vm.hostname = "srv-docker"
     node.vm.network "public_network", ip: "172.20.10.10"
     node.vm.provision "shell", path: "bootstrap.sh"   
   end

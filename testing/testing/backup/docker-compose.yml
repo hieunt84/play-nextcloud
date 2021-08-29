@@ -67,3 +67,16 @@ services:
       - redis
     networks:
       - common
+
+  cron:
+    container_name: cron
+    image: nextcloud:${NEXTCLOUD_VERSION}
+    restart: always
+    volumes:
+      - ./data/nextcloud:/var/www/html
+    entrypoint: /cron.sh   
+    depends_on:
+      - mariadb
+      - redis
+    networks:
+      - common

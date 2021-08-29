@@ -4,7 +4,7 @@
 Vagrant.configure("2") do |config|
 
   # make vm 
-  config.vm.define "srv-docker" do |node|
+  config.vm.define "srv_docker" do |node|
     node.vm.box = "centos/7"
     node.vm.box_check_update = false             # không check update image centos/7
     node.vm.provider "virtualbox" do |vb|        # Máy ảo dùng nền tảng virtualbox, với các cấu hình bổ sung thêm cho provider
