@@ -20,6 +20,8 @@ docker exec --user www-data hit-nextcloud php occ config:system:set trusted_doma
 docker-compose up -d
 docker-compose rm
 docker-compose ps
+
+docker-compose stop
 docker-compose down
-docker-compose down --rmi all --volume
+docker-compose down --rmi all --volumes
 ```
