@@ -52,14 +52,7 @@ services:
       - MYSQL_HOST=mariadb
       - REDIS_HOST=redis
       - NEXTCLOUD_ADMIN_USER=${ADMIN_USERNAME}
-      - NEXTCLOUD_ADMIN_PASSWORD=${ADMIN_PASSWORD}
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/cron.php"]
-      interval: 10s
-      timeout: 5s
-      retries: 2
-      #set depended on the startup time of your installation; added in v2.3
-      start_period: 60s  
+      - NEXTCLOUD_ADMIN_PASSWORD=${ADMIN_PASSWORD} 
     env_file:
       - db.env
     depends_on:
