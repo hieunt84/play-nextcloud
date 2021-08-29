@@ -24,13 +24,6 @@
     3. Step 3: Setup admin nextcloud
     4. Fix error : nextcloud polling url do not start with https
 
-### Ref
-https://github.com/nginx-proxy/acme-companion
-
-### Sửa chữa lỗi liên quan đến cho phép truy cập (grant access) của destop client ### liên quan đến giao thức https
-Error: nextcloud polling url do not start with https
-Solution: https://github.com/nextcloud/desktop/issues/1521
-
 ### cập nhật ngày 26Aug2021
 - Bổ sung service cron trong file docker-compose
 

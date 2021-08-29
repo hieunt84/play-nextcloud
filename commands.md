@@ -17,7 +17,9 @@ docker exec --user www-data hit-nextcloud php occ config:system:set trusted_doma
 
 ### command docker-compose
 ```console
-docker-compose build --pull
 docker-compose up -d
 docker-compose rm
+docker-compose ps
+docker-compose down
+docker-compose down --rmi all --volume
 ```
