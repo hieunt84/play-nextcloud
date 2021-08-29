@@ -56,19 +56,7 @@ cd ~
 git clone https://github.com/hieunt84/play-nextcloud.git
 
 # change working directory
-cd ./play-nextcloud/testing/testing
-
-# Make folder store data for portainer
-mkdir -p ./data/portainer
-
-# Make folder store data for mariadb
-mkdir -p ./data/mariadb
-
-# Make folder store data redis
-mkdir -p ./data/redis
-
-# Make folder store data for nextcloud
-mkdir -p ./data/nextcloud
+cd ./play-nextcloud/1-setup-v1/testing
 
 # deploy nextcloud
 docker-compose up -d
