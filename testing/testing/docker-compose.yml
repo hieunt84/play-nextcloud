@@ -74,14 +74,7 @@ services:
     restart: always
     volumes:
       - ./data/nextcloud:/var/www/html
-    entrypoint: /cron.sh
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/cron.php"]
-      interval: 10s
-      timeout: 5s
-      retries: 2
-      #set depended on the startup time of your installation; added in v2.3
-      start_period: 60s    
+    entrypoint: /cron.sh   
     depends_on:
       - mariadb
       - redis
