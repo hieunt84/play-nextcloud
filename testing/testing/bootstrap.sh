@@ -25,13 +25,12 @@ systemctl stop firewalld
 systemctl disable firewalld
 
 # config hostname
-# hostnamectl set-hostname docker1
+hostnamectl set-hostname docker1
 
 # config file host
-# cat >> "/etc/hosts" <<END
-# 127.0.0.1 docker1 docker1.hit.local
-# 172.20.10.110 docker1 docker1.hit.local
-# END
+cat >> "/etc/hosts" <<END
+ 172.20.10.110 docker1 docker1.hit.local
+END
 
 ##########################################################################################
 # SECTION 2: INSTALL Docker, Docker-compse, Portainer, git
