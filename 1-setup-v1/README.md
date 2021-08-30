@@ -1,14 +1,14 @@
 ### Prepare
-  1.VM on VMware
+  1. VM on VMware
     CPU:1
     RAM:2GB
     HDD:16GB
     OS:Centos7-64bit
 
-  2.script:bootstrap.sh
-  3.Khai báo sub domain on yourDNS (Mắt Bảo)
-  4.Mở cổng 80/443 trên router (draytek)(nếu cần)
-  5.Cấu hình mở port 2375 cho docker để Portainer kết nối
+  2. script:bootstrap.sh
+  3. Khai báo sub domain on yourDNS (Mắt Bảo)
+  4. Mở cổng 80/443 trên router (draytek)(nếu cần)
+  5. Cấu hình mở port 2375 cho docker để Portainer kết nối
 
 ### Deploy
     1.Step 1: deploy nextcloud
