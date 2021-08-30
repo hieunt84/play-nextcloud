@@ -1,13 +1,13 @@
 ### Prepare
-  1.VM on VMware
-    CPU:1
-    RAM:2GB
-    HDD:16GB
-    OS:Centos7-64bit
+  1. VM on VMware
+     - CPU:1
+     - RAM:2GB
+     - HDD:16GB
+     - OS:Centos7-64bit
 
-  2.script:bootstrap.sh
-  3.Khai báo sub domain
-  4.Mở cổng 80/443/9000
+  2. script:bootstrap.sh
+  3. Khai báo sub domain
+  4. Mở cổng 80/443/9000
 
 ### Deploy
     1.Step 1: depoloy nextcloud
