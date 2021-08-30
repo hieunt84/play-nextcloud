@@ -26,9 +26,10 @@
 
     3. Step 3: Setup admin nextcloud
 
-### Sửa chữa lỗi liên quan đến cho phép truy cập (grant access) của destop client ### liên quan đến giao thức https
-Error: nextcloud polling url do not start with https
-Solution: https://github.com/nextcloud/desktop/issues/1521
+### Sửa chữa lỗi liên quan đến cho phép truy cập (grant access) của destop client 
+### liên quan đến giao thức https
+- Error: nextcloud polling url do not start with https
+- Solution: https://github.com/nextcloud/desktop/issues/1521
 
 
 ### Thông tin
