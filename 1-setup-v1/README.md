@@ -1,5 +1,5 @@
 ### Prepare
-  1. VM on VMware
+  1. VM
      - CPU:1
      - RAM:2GB
      - HDD:16GB
