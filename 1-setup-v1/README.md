@@ -1,9 +1,9 @@
 ### Prepare
   1. VM on VMware
-    CPU:1
-    RAM:2GB
-    HDD:16GB
-    OS:Centos7-64bit
+     - CPU:1
+     - RAM:2GB
+     - HDD:16GB
+     - OS:Centos7-64bit
 
   2. script:bootstrap.sh
   3. Khai báo sub domain on yourDNS (Mắt Bảo)
